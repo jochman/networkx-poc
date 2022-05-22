@@ -1,4 +1,4 @@
-This test will take a pre-built graph:
+# This will take a pre-built graph:
 
 * Pack:  
     * VirusTotal  
@@ -19,11 +19,16 @@ This test will take a pre-built graph:
       virus-total-detonate-file-->virus-total-integration  ;
 ```
 
+To generate the readme:
+
+
 
 
 
 ```python
 import networkx as nx
+from IPython.display import display
+from IPython.core.display import HTML
 import pylab as plt
 
 graph = nx.DiGraph()
@@ -33,17 +38,27 @@ vt_tpbook = 'virus-total-test-playbook'
 graph.add_nodes_from([vt_integration, vt_pbook, vt_tpbook])
 graph.add_edge(vt_tpbook, vt_pbook)
 graph.add_edge(vt_pbook, vt_integration)
-
-nx.draw(graph, with_labels=True)
-plt.title('Basic Graph')
-plt.show()
+nx.write_graphml(graph, 'dependency.graphml')
+with open('dependency.graphml') as f:
+    display(HTML(f.read()))
+# nx.draw_networkx(graph)
+# plt.title('Basic Graph')
+# plt.show()
 
 ```
 
 
-    
-![png](README_files/README_1_0.png)
-    
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    /Users/bhochman/dev/networkx-poc/README.ipynb Cell 2' in <cell line: 12>()
+         <a href='vscode-notebook-cell:/Users/bhochman/dev/networkx-poc/README.ipynb#ch0000001?line=10'>11</a> nx.write_graphml(graph, 'dependency.graphml')
+         <a href='vscode-notebook-cell:/Users/bhochman/dev/networkx-poc/README.ipynb#ch0000001?line=11'>12</a> with open('dependency.graphml') as f:
+    ---> <a href='vscode-notebook-cell:/Users/bhochman/dev/networkx-poc/README.ipynb#ch0000001?line=12'>13</a>     display(HTML(f.read()))
+
+
+    NameError: name 'HTML' is not defined
 
 
 
@@ -91,7 +106,7 @@ graph.out_edges(vt_tpbook)
 
 
 
-    "graph.out_edges(vt_tpbook)=OutEdgeDataView([('virus-total-test-playbook', 'virus-total-detonate-file')])"
+    OutEdgeDataView([('virus-total-test-playbook', 'virus-total-detonate-file')])
 
 
 
