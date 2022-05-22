@@ -139,7 +139,6 @@ print(f'Cycles found: {nx.find_cycle(graph_with_cycles)}')
 import time
 import tempfile
 with tempfile.NamedTemporaryFile() as pickled_file:
-    f.name
     write_t = time.perf_counter()
     nx.write_gpickle(graph, pickled_file.name)
     write_speed = time.perf_counter() - write_t
