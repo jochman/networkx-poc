@@ -161,3 +161,21 @@ print(f'{read_speed=}')
     write_speed=0.0002606670022942126
     read_speed=-0.00035983300767838955
 
+
+## Pros and Cons
+
+### Pros
+
+* We can use the networkx binary file (pickled) to cache the changes
+* It's quicker to make changes than manual
+
+### Cons
+
+* It requires a learning curve if you did not did the Graphs & Algorithm course.
+* It is still 10x times slower than using a database or other solutions. [igraph](https://igraph.org/python/) for example, is much faster and requries the same effort as using the network package.
+
+## Recommendations
+
+* Moving to igraph shouldn't be much more than using the networkx pack. Consider moving to it.
+* Because no one is creating the ID-Set in it's environment - Create an optional module that can be optionally installed `pip install demisto-sdk[id-set]`.
+* Create a post commit that reject changes on failed master (especially ID-Set).
