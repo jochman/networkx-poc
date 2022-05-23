@@ -19,10 +19,10 @@
       virus-total-detonate-file-->virus-total-integration  ;
 ```
 
-To generate the readme:
+To generate this readme:
 
 ```shell
-jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --ClearOutput.enabled=True --to markdown README.ipynb
+make generate_readme
 ```
 
 
